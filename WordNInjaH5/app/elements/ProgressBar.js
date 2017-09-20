@@ -8,15 +8,18 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var RoyalFlush;
-(function (RoyalFlush) {
-    var ProgressBar = (function (_super) {
-        __extends(ProgressBar, _super);
-        function ProgressBar() {
-            return _super.call(this) || this;
-        }
-        return ProgressBar;
-    }(PIXI.Container));
-    RoyalFlush.ProgressBar = ProgressBar;
-})(RoyalFlush || (RoyalFlush = {}));
+var com;
+(function (com) {
+    var dynomike;
+    (function (dynomike) {
+        var ProgressBar = (function (_super) {
+            __extends(ProgressBar, _super);
+            function ProgressBar() {
+                return _super.call(this) || this;
+            }
+            return ProgressBar;
+        }(PIXI.Container));
+        dynomike.ProgressBar = ProgressBar;
+    })(dynomike = com.dynomike || (com.dynomike = {}));
+})(com || (com = {}));
 //# sourceMappingURL=ProgressBar.js.map

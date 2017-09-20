@@ -1,7 +1,5 @@
-///<reference path="./bin/pixi.d.ts"/>
-///<reference path="./bin/fpsmeter.d.ts"/>
 window.onload = function () {
-    var sceneManager = RoyalFlush.SceneManager;
+    var sceneManager = com.dynomike.SceneManager;
     var loader = PIXI.loader;
     var resources = PIXI.loader.resources;
     //Create Application
@@ -13,29 +11,25 @@ window.onload = function () {
     tick.start();
     //pass the app to the scenemanager.
     sceneManager.init(app);
-    //preload assets
     initializeAssets();
-    addEventListener("onStartClicked", function () {
-        sceneManager.gotoScene('game');
-    });
+    //preload assets
     function onTick() {
         meter.tickStart();
         meter.tick();
     }
     function initializeAssets() {
-        /*
-        loader.add('td_singleBar', 'assets/img/tripleDiamonSlot_SingleBar.png')
-            .add('td_dblBar', 'assets/img/tripleDiamonSlot_DoubleBar.png')
-            .add('td_tplBar', 'assets/img/tripleDiamonSlot_TripleBar.png')
-            .add('td_seven', 'assets/img/tripleDiamonSlot_RedSeven.png')
-            .add('td_tplDiamond', 'assets/img/tripleDiamonSlot_TripleDiamond.png')
-            .add('blueButton', 'assets/img/btnBlue.png')
-        .load(onAssetsLoaded);
-        */
+        loader.add('sheet', "assets/img/1x/gameAssets0.json").load(onAssetsLoaded);
+        loader.onProgress.add(onAssetsLoadProgress);
+    }
+    function onAssetsLoadProgress() {
+        console.log('progress: ' + loader.progress);
     }
     function onAssetsLoaded(loader, resources) {
-        var game = sceneManager.createScene('game', RoyalFlush.GameScene);
-        var blank = sceneManager.createScene('fake', RoyalFlush.FakeScene);
+        sceneManager.loader = loader;
+        sceneManager.resources = resources;
+        console.log('On Assets Loaded');
+        var game = sceneManager.createScene('game', com.dynomike.GameScene);
+        var blank = sceneManager.createScene('fake', com.dynomike.FakeScene);
         var intro = sceneManager.createScene('intro'); //update this to show the intro scene
         sceneManager.gotoScene('game');
     }

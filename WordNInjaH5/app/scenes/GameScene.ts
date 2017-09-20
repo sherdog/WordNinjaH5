@@ -1,24 +1,18 @@
-///<reference path="../../lib/pixi.d.ts" />
+///<reference path="../../bin/pixi.d.ts" />
 
-module Dynomike {
-    export class GameScene extends Scene {
+module com.dynomike {
+    export class GameScene extends com.dynomike.SceneBase {
 
-
-        constructor(app: PIXI.Application) {
-            super(app);
-            this.onSceneLoaded();
-        }
-
-        private onLoadComplete(loader, resources) {
-            //Move this to the base scene class, on sceneLoade would be called after all assets were loaded.
-        }
-
-        private onSceneLoaded() {
-            console.log('onSceneLoaded called in GameScene');
+        constructor() {
+            super();
+            console.log('Created a game scene');
+            
         }
 
         public update() {
             super.update();
+
+           
         }
 
     }
